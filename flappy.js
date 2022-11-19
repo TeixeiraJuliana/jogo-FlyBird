@@ -62,7 +62,7 @@ function Barreiras(altura, largura, abertura, espaço, notificarPonto){
         new ParDeBarreiras(altura, abertura, largura + espaço * 4 )
      ]
 
-     const deslocamento = 1
+     const deslocamento = 3
      this.animar = () => {
         this.pares.forEach( par =>{
             par.setX(par.getx() - deslocamento)
@@ -139,6 +139,31 @@ function Progresso(alturaJogo)
     this.atualizarPontos(0)
 }
 
+function posicao(elmA, elmB)
+{
+    const a = elmA.getBoundingClientRect()
+    const b = elmB.getBoundingClientRect()
+
+
+    const horizontal = a.left + a.width >= b.left && b.left + b.width >= a.left
+    const vertical = a.top + a.height >= b.top && b.top + b.height >= a.top 
+
+    return horizontal && vertical
+}
+function impacto(passaro, barreiras)
+{
+    let colidiu = false
+
+    barreiras.pares.forEach(parDeBarreiras => {
+        if(!colidiu)
+        {
+            const superior = parDeBarreiras.superior.elemento
+            const inferior = parDeBarreiras.inferior.elemento
+            colidiu = posicao(passaro.elemento, superior) || posicao(passaro.elemento, inferior)
+        }
+    })
+    return colidiu
+}
 function FlyByrd()
 {
     let pontos = 0
@@ -147,7 +172,7 @@ function FlyByrd()
     const largura = areaDoJogo.clientWidth
 
     const progresso =  new Progresso
-    const barreiras =  new Barreiras(altura, largura, 200 , 400,
+    const barreiras =  new Barreiras(altura, largura, 300 , 400,
         () => progresso.atualizarPontos(++pontos)
     )
     const passaro = new Passaro(altura)
@@ -161,7 +186,10 @@ function FlyByrd()
        const temporizador =  setInterval(() => { 
                 barreiras.animar(), 
                 passaro.animar()
-            
+                if(impacto(passaro, barreiras))
+                {
+                    clearInterval(temporizador)
+                }
         }, 20)
     }
 }
