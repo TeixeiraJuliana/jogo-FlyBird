@@ -68,7 +68,7 @@ function Barreiras(altura, largura, abertura, espaço, notificarPonto){
             par.setX(par.getx() - deslocamento)
 
             //loop para retornar quando o elemento sair da tela 
-            if(par.getx() < -par.getLargura())
+            if(par.getx() < par.getLargura())
             {
                 par.setX(par.getx() + espaço * this.pares.length)
                 par.soartearabertura()
@@ -77,7 +77,7 @@ function Barreiras(altura, largura, abertura, espaço, notificarPonto){
             const meio = largura / 2
             const cruzouOMeio = par.getx() + deslocamento >= meio && par.getx() < meio 
 
-            if (cruzouOMeio) "ok"//notificarPonto() 
+            if (cruzouOMeio){ notificarPonto() }
             
         })
      }
@@ -111,24 +111,59 @@ function Passaro(alturaJogo)
         }else{
             this.setY(novoY)
         }
-        
-        this.setY(alturaJogo / 2)
     }
-
+    this.setY(alturaJogo / 2)
 }
 
-const barreiras = new Barreiras(700, 1100, 200, 400)
-const passaro  = new Passaro(700)
-const areaDoJogo = document.querySelector('[wm-flappy]')
+// const barreiras = new Barreiras(700, 1100, 200, 400)
+// const passaro  = new Passaro(700)
+// const areaDoJogo = document.querySelector('[wm-flappy]')
 
-areaDoJogo.appendChild(passaro.elemento)
-barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
+// areaDoJogo.appendChild(passaro.elemento)
+// barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
 
-setInterval(() => { 
-        barreiras.animar(), 
-        passaro.animar()
-    20}
-)
+// setInterval(() => { 
+//         barreiras.animar(), 
+//         passaro.animar()
+//     20}
+// )
 
 
 
+function Progresso(alturaJogo)
+{
+    this.elemento = novoElemento('span', 'progresso')
+    this.atualizarPontos = pontos => {
+        this.elemento.innerHTML = pontos 
+    }
+    this.atualizarPontos(0)
+}
+
+function FlyByrd()
+{
+    let pontos = 0
+    const areaDoJogo = document.querySelector('[wm-flappy]')
+    const altura = areaDoJogo.clientHeight
+    const largura = areaDoJogo.clientWidth
+
+    const progresso =  new Progresso
+    const barreiras =  new Barreiras(altura, largura, 200 , 400,
+        () => progresso.atualizarPontos(++pontos)
+    )
+    const passaro = new Passaro(altura)
+
+    areaDoJogo.appendChild(progresso.elemento)
+    areaDoJogo.appendChild(passaro.elemento)
+    barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
+
+    this.start = () => {
+       // loop 
+       const temporizador =  setInterval(() => { 
+                barreiras.animar(), 
+                passaro.animar()
+            
+        }, 20)
+    }
+}
+
+new FlyByrd().start()

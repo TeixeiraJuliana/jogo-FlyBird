@@ -59,4 +59,5 @@
     font-family: 'pixel'; 
     font-size: 70px;
     color: aliceblue;
+    z-index: 100;
 } 
