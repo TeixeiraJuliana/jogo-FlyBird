@@ -3,19 +3,26 @@
     src: url('../fonts/Oswald-Regular.ttf') format('truetype');
 } */
 
-* {
-    font-family: 'Oswald', sans-serif;
+@font-face{
+    font-family: 'Pixel';
+    src: url('../fonts/Pixel.ttf');
 }
 
-html {
-    height: 100%;
-}
 
-body {
-    margin: 0;
+
+body{
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
     background-color: #0D262D;
     color: #fff;
-    height: 100%;
+    font-family: 'pixel'; 
+}
+
+.container {
+    margin: 0;
+    color: #fff;
+    
 }
 
 .conteudo {

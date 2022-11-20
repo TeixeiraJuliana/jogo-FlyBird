@@ -43,7 +43,7 @@ function ParDeBarreiras(altura, abertura, x){
     }
     this.getx = () => parseInt(this.elemento.style.left.split('px')[0])
     this.setX = x => this.elemento.style.left = `${x}px`
-    this.getLargura =  () => this.elemento.clientwidh
+    this.getLargura =  () => this.elemento.clientWidth
 
     this.soartearabertura()
     this.setX(x)
@@ -60,11 +60,11 @@ function Barreiras(altura, largura, abertura, espaço, notificarPonto){
         new ParDeBarreiras(altura, abertura, largura + espaço * 2 ),
         new ParDeBarreiras(altura, abertura, largura + espaço * 3 ),
         new ParDeBarreiras(altura, abertura, largura + espaço * 4 )
-     ]
+     ] 
 
-     const deslocamento = 3
+     const deslocamento = 5                      
      this.animar = () => {
-        this.pares.forEach( par =>{
+        this.pares.forEach(par => {
             par.setX(par.getx() - deslocamento)
 
             //loop para retornar quando o elemento sair da tela 
@@ -77,7 +77,7 @@ function Barreiras(altura, largura, abertura, espaço, notificarPonto){
             const meio = largura / 2
             const cruzouOMeio = par.getx() + deslocamento >= meio && par.getx() < meio 
 
-            if (cruzouOMeio){ notificarPonto() }
+            if (cruzouOMeio) notificarPonto() 
             
         })
      }
@@ -195,3 +195,8 @@ function FlyByrd()
 }
 
 new FlyByrd().start()
+
+
+// outras fases 
+
+//se a pontuação for > 15 deslocamento recebe um valor maior  b 

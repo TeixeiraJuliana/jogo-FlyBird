@@ -2,17 +2,10 @@
 *{
     box-sizing: border-box;
 }
-
-@font-face{
-    font-family: 'Pixel';
-    src: url('./assets/fonts/Pixel.ttf');
-}
-
-
 [wm-flappy] {
     position: relative;
     border: 5px solid dodgerblue;
-    height: 700px;
+    height: 600px;
     width: 1200px;
     background-color: deepskyblue;
     overflow: hidden;
