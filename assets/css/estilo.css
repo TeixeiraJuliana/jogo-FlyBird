@@ -12,51 +12,59 @@
 
 body{
     width: 100vw;
+    height: 100vh;
     margin: 0px;
     padding: 0px;
-    background-color: #0D262D;
+    
     color: #fff;
-    font-family: 'pixel'; 
+    font-family: 'Press Start 2P', cursive;
 }
 
 .container {
+    width: 100%;
+    background-color: #0D262D;
     margin: 0;
+    padding: 25px;
     color: #fff;
-    
-}
-
-.conteudo {
+    height: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100%;
 }
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-.exercicio div {
-    font-size: 3em;
-    border: solid 5px #fff;
-    padding: 20px 40px;
-    margin: 10px;
+}
+.btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 35px;
+}
+.btn-area > button
+{
+    font-family: 'Press Start 2P', cursive;
+    padding: 5px 25px;
+}
+.nivel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nivel > label{
+    margin-bottom: 5px;
 }
 
-.exercicio div:nth-of-type(1) {
-    background-color: darkgoldenrod;
-}
-
-.exercicio div:nth-of-type(2) {
-    background-color: crimson;
-}
-
-.exercicio div:nth-of-type(3) {
-    background-color: darkcyan;
-}
-
-.exercicio div:nth-of-type(4) {
-    background-color: darkorchid;
-}
-
-.exercicio .destaque {
-    border: solid 10px greenyellow;
-    color: greenyellow;
-    font-weight: bold;
+.nivel > select{
+    padding: 5px;
+    border-radius: 10px;
+    background-color: deepskyblue;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
 }

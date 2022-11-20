@@ -1,3 +1,11 @@
+function getDft()
+{
+    const selectDificuldade = document.querySelector("#options").value 
+
+    return selectDificuldade
+}
+
+
 function novoElemento(tagname, className){
     const elem = document.createElement(tagname)
     elem.className = className
@@ -61,8 +69,10 @@ function Barreiras(altura, largura, abertura, espaço, notificarPonto){
         new ParDeBarreiras(altura, abertura, largura + espaço * 3 ),
         new ParDeBarreiras(altura, abertura, largura + espaço * 4 )
      ] 
-
-     const deslocamento = 5                      
+     
+     let nb = getDft()
+     const deslocamento =  nb > 0 ? nb : 3   
+     
      this.animar = () => {
         this.pares.forEach(par => {
             par.setX(par.getx() - deslocamento)
@@ -194,9 +204,25 @@ function FlyByrd()
     }
 }
 
-new FlyByrd().start()
+
+
 
 
 // outras fases 
 
 //se a pontuação for > 15 deslocamento recebe um valor maior  b 
+
+var btnStart = document.querySelector("#start")
+var btnRestart = document.querySelector("#restart")
+
+
+btnStart.addEventListener("click", function()
+{
+    new FlyByrd().start()
+})
+
+btnRestart.addEventListener("click", function()
+{
+    location.reload(true);
+})
+

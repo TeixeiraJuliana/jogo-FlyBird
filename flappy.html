@@ -5,15 +5,34 @@
     <title>Fly Bird</title>
     <link rel="stylesheet" href="./assets/css/estilo.css">
     <link rel="stylesheet" href="./assets/css/flappy.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
-
 <body >
-    <div class="conteudo">
-        <!-- <button>oiii</button> -->
+    <div class="container">
+       <div class="header">
+        <form class="nivel" >
+            <label for="">Nivel</label>
+            <select name="options" id="options" onchange="getDft()">
+                <option  value="" >Selecione um nivel de dificuldade</option>
+                <option  value="5">Fácil</option>
+                <option  value="10">Médio</option>
+                <option  value="15">Dificil</option> 
+            </select>
+            <!-- <input style="background: transparent; border:none" value="" type="submit" id="dfcd"> -->
+        </form>
+        <div class="btn-area">
+            <button id="start" >Start</button>
+            <button id="restart" >Stop</button>
+        </div>
         <h1>FLY BIRD </h1>
+       </div>
         <div wm-flappy>
+            <!-- <span>Seja Bem vindo</span> -->
         </div>
         <script src="./Controller/Controller-index.js   "></script>
+       </div>
     </div>
 </body>
 
